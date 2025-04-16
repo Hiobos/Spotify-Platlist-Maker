@@ -1,4 +1,4 @@
-# Spotify-Platlist-Maker-Top100-Songs
+# Spotify-Playlist-Maker-Top100-Songs
  <h2>Creates playlists with top 100 songs from entered date, webscarping / Spotify API.
 <br>Scraping data of 100 most played songs from <a href="https://www.billboard.com/charts/hot-100/">Billboard</a></h2>
 
