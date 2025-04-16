@@ -17,8 +17,8 @@ redirect_uri.txt (paste redirect uri from dashboard)<br>
 Afer launching the app it will ask for a date and then fetch list of tracks from website, <br>
 then it will create playlist on your profile and add them one by one.<br>
 </h3><h2>
-input:
+Input:<br>
 <img src="img/img.png"><br>
-result:<br>
+Result:<br>
 <img src="img/img_1.png">
 </h2>
