@@ -35,11 +35,12 @@ class Music:
                              class_='o-chart-results-list-row // lrv-a-unstyle-list lrv-u-flex u-height-200 u-height-100@mobile-max u-height-100@tablet-only lrv-u-background-color-white a-chart-has-chart-detail, lrv-a-unstyle-list lrv-u-flex lrv-u-height-100p lrv-u-flex-direction-column@mobile-max, o-chart-results-list__item // lrv-u-flex-grow-1 lrv-u-flex lrv-u-flex-direction-column lrv-u-justify-content-center lrv-u-border-b-1 u-border-b-0@mobile-max lrv-u-border-color-grey-light  lrv-u-padding-l-1@mobile-max, c-label  a-no-trucate a-font-primary-s lrv-u-font-size-14@mobile-max u-line-height-normal@mobile-max u-letter-spacing-0021 lrv-u-display-block a-truncate-ellipsis-2line u-max-width-330 u-max-width-230@tablet-only u-font-size-20@tablet')
         author_list = [author_item.string.strip() for author_item in author if len(author_item.string.strip()) > 2]
 
+        #adding each track to the list
         for i in range(0, 100):
             try:
                 self.playlist.append(f"{title_list[i]} {author_list[i]}")
             except IndexError:
                 "Something went wrong, check spellin."
                 return
-
+        #returning list of tracks and date so that later playlist can be named after it
         return self.playlist, date

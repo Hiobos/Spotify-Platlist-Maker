@@ -1,5 +1,5 @@
 from spot_create import Spot
-
 spot = Spot()
 
-spot.authorize()
+#function with mian logic
+spot.add_playlist()

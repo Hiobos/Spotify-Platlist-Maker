@@ -1,9 +1,9 @@
 import requests
-
 from scrap import Music
-music = Music()
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 
-#profil_id: 31i4urplmukhyu5u6ljp4dadsu5q
+music = Music()
 
 class Spot:
     def __init__(self):
@@ -13,21 +13,29 @@ class Spot:
         self.client_secret = open('keys/client_secret.txt', 'r').read()
         self.redirect_uri = open('keys/redirect_uri.txt', 'r').read()
 
-    def authorize(self):
-        endpoint = 'https://accounts.spotify.com/authorize'
-        parameters = {
-            'client_id': self.client_id,
-            'response_type': 'code',
-            'redirect_uri': self.redirect_uri,
-            'scope': 'playlist-modify-public'
-        }
+        #handling authentication
+        self.sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+            client_id=self.client_id,
+            client_secret=self.client_secret,
+            redirect_uri=self.redirect_uri,
+            scope='playlist-modify-public'
+        ))
 
-        response = requests.Request('GET', url=endpoint, params=parameters).prepare()
-        print(f"open in browser:\n{response.url}")
+    def add_playlist(self):
+        # playlist creation, name is the date provided by the user
+        user_id = self.sp.current_user()['id']
+        playlist = self.sp.user_playlist_create(user=user_id, name=self.date, public=True)
+        playlist_id = playlist['id']
+        print("✔️ Playlist created:", playlist['external_urls']['spotify'])
 
-    def get_profile(self):
-        endpoint = 'https://api.spotify.com/v1/me'
-
-
-
+        #adding tracks to the playlist, looping through tracks scraped from billboard website
+        for track in self.playlist:
+            result = self.sp.search(q=track, type='track', limit=1)
+            item = result['tracks']['items']
+            #checks if any result matches
+            if item:
+                track_uri = item[0]['uri']
+                self.sp.playlist_add_items(playlist_id, [track_uri])
+            else:
+                print(f"Track not found: {track}")
 
