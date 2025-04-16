@@ -1,5 +1,5 @@
-from scrap import Music
+from spot_create import Spot
 
-music = Music()
+spot = Spot()
 
-print(music.get_music())
+spot.authorize()

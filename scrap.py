@@ -42,4 +42,4 @@ class Music:
                 "Something went wrong, check spellin."
                 return
 
-        return self.playlist
+        return self.playlist, date
