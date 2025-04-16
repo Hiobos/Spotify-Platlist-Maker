@@ -14,7 +14,7 @@ class Spot:
         self.redirect_uri = open('keys/redirect_uri.txt', 'r').read()
 
     def authorize(self):
-        endpoint = 'https://accounts.spotify.com/authorize?'
+        endpoint = 'https://accounts.spotify.com/authorize'
         parameters = {
             'client_id': self.client_id,
             'response_type': 'code',
@@ -22,9 +22,8 @@ class Spot:
             'scope': 'playlist-modify-public'
         }
 
-        response = requests.get(url=endpoint, params=parameters)
-        print(response)
-        print(response.text)
+        response = requests.Request('GET', url=endpoint, params=parameters).prepare()
+        print(f"open in browser:\n{response.url}")
 
     def get_profile(self):
         endpoint = 'https://api.spotify.com/v1/me'
