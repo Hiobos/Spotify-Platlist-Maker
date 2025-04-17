@@ -1,24 +1,81 @@
-# Spotify-Playlist-Maker-Top100-Songs
- <h2>Creates playlists with top 100 songs from entered date, webscarping / Spotify API.
-<br>Scraping data of 100 most played songs from <a href="https://www.billboard.com/charts/hot-100/">Billboard</a></h2>
+# 🎶 Spotify Time Machine Playlist Maker
 
-<h3><br>modules used:<br>
--spotipy (authentication, adding tracks, creating playlists)<br>
--requests<br>
--Beautifulsoup 4</h3>
+Create a Spotify playlist with the **top 100 Billboard hits** from any past date!
 
-<h2>How to use:<br></h2>
-<h3>enter spotify for developers (https://developer.spotify.com/dashboard) log in, create an app<br>
-and in APIs select "WEB API", redirect uri can be: http://127.0.0.1:9090 <br>
-Then in folder keys create:<br>
-client_id.txt (paste client id from app dashboard)<br>
-client_secret.txt (paste client secret from app dashboard)<br>
-redirect_uri.txt (paste redirect uri from dashboard)<br>
-Afer launching the app it will ask for a date and then fetch list of tracks from website, <br>
-then it will create playlist on your profile and add them one by one.<br>
-</h3><h2>
+This tool scrapes historical music data from the [Billboard Hot 100](https://www.billboard.com/charts/hot-100/) and uses the Spotify API to create a playlist with the matching songs.
+
+---
+
+## 🚀 Features
+
+- 🔧 Scrapes Billboard's Top 100 songs from a selected date  
+- 📀 Creates a playlist on your Spotify profile  
+- 🎵 Adds available songs to your new playlist  
+
+---
+
+## 📦 Requirements
+
+- `spotipy`  
+- `requests`  
+- `beautifulsoup4`  
+
+---
+
+Install dependencies using:
+
+```bash
+pip install spotipy requests beautifulsoup4
+```
+
+---
+
+## 🛠️ Setup Instructions
+Go to the Spotify Developer <a href='https://developer.spotify.com/dashboard'>Dashboard</a>
+
+Log in and create a new app
+
+Under Redirect URI, use:
+http://127.0.0.1:9090
+In your project folder, create a keys directory with the following files:<br />
+keys/<br />
+├── client_id.txt         # Your Spotify Client ID<br />
+├── client_secret.txt     # Your Spotify Client Secret<br />
+└── redirect_uri.txt      # Your redirect URI<br />
+Paste the appropriate values from your Spotify App Dashboard into each file
+
+---
+## Usage
+
+Run the app:
+```bash
+python main.py
+```
+When prompted, enter a date in the format:
+
+```bash
+YYYY-MM-DD
+```
+The script will:
+<ol>
+ <li>Scrape the Billboard chart from that date</li>
+
+ <li>Search each song on Spotify</li>
+
+ <li>Create a new playlist</li>
+
+ <li>Add found songs to the playlist</li>
+</ol>
+
+---
+
+##💡 Example
+
+
 Input:<br>
-<img src="img/img.png"><br>
+```bash
+2025-04-12
+```
 Result:<br>
 <img src="img/img_1.png">
-</h2>
+
